@@ -1,0 +1,6 @@
+# Put shared course dependencies here if most experiments use the same environment.
+# If a project needs a different environment, add a dedicated requirements.txt inside that project.
+
+numpy
+torch
+matplotlib
