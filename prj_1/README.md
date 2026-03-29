@@ -4,7 +4,7 @@ This experiment follows the classification handout and focuses on:
 
 - CIFAR-10 classification
 - CUB-200-2011 fine-grained bird classification
-- model comparison across AlexNet, ResNet, SENet, and ViT
+- model comparison across VGG16, ResNet, MobileNet, AlexNet, SENet, and ViT
 - evaluation with accuracy, recall, and confusion matrix
 
 ## Directory Layout
@@ -23,9 +23,8 @@ This experiment follows the classification handout and focuses on:
 
 The project now covers the main requirements in the handout:
 
-- CIFAR-10 classification
-- CUB-200-2011 classification
-- model interfaces for AlexNet, ResNet, SENet, and ViT
+- CIFAR-10: VGG16, ResNet, MobileNet
+- CUB-200-2011: VGG16, ResNet, MobileNet, AlexNet, SENet, ViT
 - accuracy, macro recall, and confusion matrix
 - training curves and checkpoint saving
 
@@ -59,23 +58,34 @@ If your dataset is stored elsewhere, pass `--data-root /path/to/cub_root`.
 
 ## Training
 
-Train a CIFAR-10 ResNet18 baseline:
+Train a CIFAR-10 ResNet baseline:
 
 ```bash
 cd prj_1
 python train.py --config configs/cifar10_resnet18.yaml
 ```
 
-Train a CIFAR-10 SENet baseline:
+Train a CIFAR-10 VGG16 baseline:
 
 ```bash
-python train.py --config configs/cifar10_senet.yaml
+python train.py --config configs/cifar10_vgg16.yaml
+```
+
+Train a CIFAR-10 MobileNet baseline:
+
+```bash
+python train.py --config configs/cifar10_mobilenet.yaml
 ```
 
 Train on CUB-200-2011:
 
 ```bash
 python train.py --config configs/cub_resnet50.yaml --data-root ../data/cub_200_2011
+python train.py --config configs/cub_vgg16.yaml --data-root ../data/cub_200_2011
+python train.py --config configs/cub_mobilenet.yaml --data-root ../data/cub_200_2011
+python train.py --config configs/cub_alexnet.yaml --data-root ../data/cub_200_2011
+python train.py --config configs/cub_senet.yaml --data-root ../data/cub_200_2011
+python train.py --config configs/cub_vit.yaml --data-root ../data/cub_200_2011
 ```
 
 ## Evaluation

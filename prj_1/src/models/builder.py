@@ -3,9 +3,11 @@ from __future__ import annotations
 from typing import Any
 
 from .alexnet import build_alexnet
+from .mobilenet import build_mobilenet
 from .resnet import build_resnet
 from .senet import build_senet
 from .vit import build_vit
+from .vgg import build_vgg16
 
 
 def build_model(config: dict[str, Any]):
@@ -15,6 +17,10 @@ def build_model(config: dict[str, Any]):
 
     if model_name == "alexnet":
         return build_alexnet(num_classes=num_classes, pretrained=pretrained)
+    if model_name == "vgg16":
+        return build_vgg16(num_classes=num_classes, pretrained=pretrained)
+    if model_name in {"mobilenet", "mobilenet_v3_small"}:
+        return build_mobilenet(num_classes=num_classes, pretrained=pretrained)
     if model_name.startswith("resnet"):
         return build_resnet(
             variant=model_name,

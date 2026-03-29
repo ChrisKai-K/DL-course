@@ -1,0 +1,15 @@
+dataset: cub_200_2011
+model: alexnet
+run_name: cub_alexnet_baseline
+epochs: 20
+batch_size: 32
+learning_rate: 0.0003
+optimizer: adam
+scheduler: step
+step_size: 8
+gamma: 0.5
+weight_decay: 0.0001
+image_size: 224
+use_augmentation: true
+num_workers: 2
+num_classes: 200
