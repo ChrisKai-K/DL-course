@@ -2,7 +2,7 @@ dataset: cub_200_2011
 model: vit
 run_name: cub_vit_baseline
 epochs: 20
-batch_size: 8
+batch_size: 16
 learning_rate: 0.0001
 optimizer: adam
 scheduler: step
@@ -11,5 +11,5 @@ gamma: 0.5
 weight_decay: 0.0001
 image_size: 224
 use_augmentation: true
-num_workers: 2
+num_workers: 8
 num_classes: 200
