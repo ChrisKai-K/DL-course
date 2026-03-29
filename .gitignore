@@ -5,13 +5,13 @@ __pycache__/
 venv/
 .python-version
 
-data/
-datasets/
-outputs/
-results/
-logs/
-wandb/
-checkpoints/
+/data/
+/datasets/
+/outputs/
+/results/
+/logs/
+/wandb/
+/checkpoints/
 
 *.pt
 *.pth
