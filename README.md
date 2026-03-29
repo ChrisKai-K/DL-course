@@ -4,8 +4,9 @@ Deep learning course experiments managed in a single repository.
 
 ## Structure
 
-- `prj_1/`: experiment 1
-- `prj_2/`: experiment 2
+- `docs/`: course handouts or experiment notes
+- `prj_1/`: experiment 1, image classification
+- `prj_2/`: experiment 2 placeholder
 - `shared/`: reusable utilities across experiments
 - `scripts/`: helper scripts for setup or sync
 - `env/`: environment notes or exported dependency files

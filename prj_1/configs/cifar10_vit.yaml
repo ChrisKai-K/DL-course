@@ -1,0 +1,15 @@
+dataset: cifar10
+model: vit
+run_name: cifar10_vit_baseline
+epochs: 10
+batch_size: 64
+learning_rate: 0.0003
+optimizer: adam
+scheduler: step
+step_size: 5
+gamma: 0.5
+weight_decay: 0.0001
+image_size: 224
+use_augmentation: true
+num_workers: 2
+num_classes: 10
