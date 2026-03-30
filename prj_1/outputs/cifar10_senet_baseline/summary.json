@@ -1,0 +1,26 @@
+{
+  "config": {
+    "dataset": "cifar10",
+    "model": "senet",
+    "run_name": "cifar10_senet_baseline",
+    "epochs": 10,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "optimizer": "adam",
+    "scheduler": "step",
+    "step_size": 5,
+    "gamma": 0.5,
+    "weight_decay": 0.0001,
+    "image_size": 224,
+    "use_augmentation": true,
+    "num_workers": 2,
+    "num_classes": 10,
+    "data_root": "/root/data/cifar-10"
+  },
+  "best_epoch": 8,
+  "best_metrics": {
+    "loss": 0.4099593755722046,
+    "accuracy": 0.8600999712944031,
+    "recall": 0.8601000000000001
+  }
+}

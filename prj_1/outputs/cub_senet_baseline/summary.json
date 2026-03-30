@@ -1,0 +1,26 @@
+{
+  "config": {
+    "dataset": "cub_200_2011",
+    "model": "senet",
+    "run_name": "cub_senet_baseline",
+    "epochs": 20,
+    "batch_size": 32,
+    "learning_rate": 0.0001,
+    "optimizer": "adam",
+    "scheduler": "step",
+    "step_size": 8,
+    "gamma": 0.5,
+    "weight_decay": 0.0001,
+    "image_size": 224,
+    "use_augmentation": true,
+    "num_workers": 8,
+    "num_classes": 200,
+    "data_root": "/root/data/CUB200-2011"
+  },
+  "best_epoch": 19,
+  "best_metrics": {
+    "loss": 2.8195598899680334,
+    "accuracy": 0.30445289611816406,
+    "recall": 0.3084931574821103
+  }
+}

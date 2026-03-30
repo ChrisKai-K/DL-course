@@ -1,0 +1,26 @@
+{
+  "config": {
+    "dataset": "cifar10",
+    "model": "mobilenet",
+    "run_name": "cifar10_mobilenet_baseline",
+    "epochs": 10,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "optimizer": "adam",
+    "scheduler": "step",
+    "step_size": 5,
+    "gamma": 0.5,
+    "weight_decay": 0.0001,
+    "image_size": 64,
+    "use_augmentation": true,
+    "num_workers": 8,
+    "num_classes": 10,
+    "data_root": "/root/data/cifar-10"
+  },
+  "best_epoch": 10,
+  "best_metrics": {
+    "loss": 0.8355731291770935,
+    "accuracy": 0.7070000171661377,
+    "recall": 0.7070000000000001
+  }
+}
