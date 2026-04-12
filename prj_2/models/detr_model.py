@@ -81,7 +81,7 @@ class DETRDetector(BaseDetector):
                     cy = (boxes_scaled[:, 1] + boxes_scaled[:, 3]) / 2 / target_h
                     bw = (boxes_scaled[:, 2] - boxes_scaled[:, 0]) / target_w
                     bh = (boxes_scaled[:, 3] - boxes_scaled[:, 1]) / target_h
-                    boxes_norm = torch.stack([cx, cy, bw, bh], dim=1)
+                    boxes_norm = torch.stack([cx, cy, bw, bh], dim=1).clamp(0.0, 1.0)
                 else:
                     boxes_norm = torch.zeros((0, 4))
 
@@ -99,7 +99,7 @@ class DETRDetector(BaseDetector):
 
             optimizer.zero_grad()
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 0.1)
+            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
             optimizer.step()
             total_loss += loss.item()
 
