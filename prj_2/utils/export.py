@@ -21,7 +21,7 @@ def write_detection_txts(predictions, results_dir, class_names):
             label_idx = int(label)
             if label_idx < 1 or label_idx > len(class_names):
                 continue
-            name = class_names[label_idx - 1]
+            name = class_names[label_idx - 1].replace(" ", "_")
             x1, y1, x2, y2 = int(box[0]), int(box[1]), int(box[2]), int(box[3])
             lines.append(f"{name} {score:.6f} {x1} {y1} {x2} {y2}")
 
@@ -47,7 +47,7 @@ def write_groundtruth_txts(dataset, results_dir, class_names):
             label_idx = int(label)
             if label_idx < 1 or label_idx > len(class_names):
                 continue
-            name = class_names[label_idx - 1]
+            name = class_names[label_idx - 1].replace(" ", "_")
             x1, y1, x2, y2 = int(box[0]), int(box[1]), int(box[2]), int(box[3])
             lines.append(f"{name} {x1} {y1} {x2} {y2}")
 
