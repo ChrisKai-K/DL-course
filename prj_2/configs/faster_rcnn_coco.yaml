@@ -1,0 +1,22 @@
+model:
+  name: faster_rcnn
+  num_classes: 81  # 80 COCO classes + background
+
+dataset:
+  name: coco
+  root: ./data/coco
+  max_train: 1000
+  max_val: 500
+  image_size: 800
+
+training:
+  epochs: 5
+  batch_size: 4
+  lr: 0.005
+  momentum: 0.9
+  weight_decay: 0.0005
+  device: cuda
+
+output:
+  checkpoint_dir: ./checkpoints/faster_rcnn_coco
+  results_dir: ./results/faster_rcnn_coco

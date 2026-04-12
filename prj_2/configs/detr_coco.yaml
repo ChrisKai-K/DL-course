@@ -1,0 +1,22 @@
+model:
+  name: detr
+  hf_model_name: facebook/detr-resnet-50
+  num_classes: 80
+
+dataset:
+  name: coco
+  root: ./data/coco
+  max_train: 500
+  max_val: 200
+  image_size: 800
+
+training:
+  epochs: 3
+  batch_size: 2
+  lr: 0.0001
+  weight_decay: 0.0001
+  device: cuda
+
+output:
+  checkpoint_dir: ./checkpoints/detr_coco
+  results_dir: ./results/detr_coco

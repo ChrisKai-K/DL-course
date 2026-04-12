@@ -1,0 +1,21 @@
+model:
+  name: yolo
+  weights: yolov8n.pt  # nano model, fastest
+  num_classes: 20
+
+dataset:
+  name: voc
+  root: ./data/VOCdevkit
+  max_train: 500
+  max_val: 200
+  image_size: 640
+
+training:
+  epochs: 5
+  batch_size: 16
+  lr: 0.01
+  device: cuda
+
+output:
+  checkpoint_dir: ./checkpoints/yolo_voc
+  results_dir: ./results/yolo_voc

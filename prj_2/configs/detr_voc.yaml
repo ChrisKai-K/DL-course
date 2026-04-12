@@ -1,0 +1,22 @@
+model:
+  name: detr
+  hf_model_name: facebook/detr-resnet-50
+  num_classes: 20  # VOC classes (no background token needed separately)
+
+dataset:
+  name: voc
+  root: ./data/VOCdevkit
+  max_train: 300  # smaller for DETR — it's slow
+  max_val: 100
+  image_size: 800
+
+training:
+  epochs: 3
+  batch_size: 2
+  lr: 0.0001
+  weight_decay: 0.0001
+  device: cuda
+
+output:
+  checkpoint_dir: ./checkpoints/detr_voc
+  results_dir: ./results/detr_voc

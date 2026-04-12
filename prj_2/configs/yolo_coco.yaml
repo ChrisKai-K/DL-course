@@ -1,0 +1,21 @@
+model:
+  name: yolo
+  weights: yolov8n.pt
+  num_classes: 80
+
+dataset:
+  name: coco
+  root: ./data/coco
+  max_train: 1000
+  max_val: 500
+  image_size: 640
+
+training:
+  epochs: 5
+  batch_size: 16
+  lr: 0.01
+  device: cuda
+
+output:
+  checkpoint_dir: ./checkpoints/yolo_coco
+  results_dir: ./results/yolo_coco
