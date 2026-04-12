@@ -7,18 +7,19 @@ base = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(base, 'map_results.txt'), 'w') as out:
     for m in models:
         out.write(f'=== {m} ===\n')
-        r = subprocess.run(
+        proc = subprocess.Popen(
             ['python', 'pascalvoc.py',
              '-gt', os.path.join(base, 'results', m, 'groundtruth'),
              '-det', os.path.join(base, 'results', m, 'detections'),
              '-t', '0.5', '-np'],
-            capture_output=True, text=True,
-            cwd=os.path.join(base, 'Object-Detection-Metrics'),
-            input='Y\n'
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            text=True,
+            cwd=os.path.join(base, 'Object-Detection-Metrics')
         )
-        out.write(r.stdout)
-        if r.stderr:
-            out.write(r.stderr)
+        stdout, stderr = proc.communicate(input='Y\n')
+        out.write(stdout)
+        if stderr:
+            out.write(stderr)
         out.write('\n')
 
 print(open(os.path.join(base, 'map_results.txt')).read())
