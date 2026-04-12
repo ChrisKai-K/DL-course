@@ -13,7 +13,8 @@ with open(os.path.join(base, 'map_results.txt'), 'w') as out:
              '-det', os.path.join(base, 'results', m, 'detections'),
              '-t', '0.5', '-np'],
             capture_output=True, text=True,
-            cwd=os.path.join(base, 'Object-Detection-Metrics')
+            cwd=os.path.join(base, 'Object-Detection-Metrics'),
+            input='Y\n'
         )
         out.write(r.stdout)
         if r.stderr:
