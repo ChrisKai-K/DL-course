@@ -1,0 +1,664 @@
+=== faster_rcnn_voc ===
+
+
+####################################################################################################
+#                                                                                                  #
+# THE CURRENT VERSION WAS UPDATED WITH A VISUAL INTERFACE, INCLUDING MORE METRICS AND SUPPORTING   #
+# OTHER FILE FORMATS.                                                                              #
+#                                                                                                  #
+# PLEASE ACCESS IT ACCESSED AT:                                                                    #
+# https://github.com/rafaelpadilla/review_object_detection_metrics                                 #
+#                                                                                                  #
+# @Article{electronics10030279,                                                                    #
+#     author         = {Padilla, Rafael and Passos, Wesley L. and Dias, Thadeu L. B. and Netto,    #
+#                       Sergio L. and da Silva, Eduardo A. B.},                                    #
+#     title          = {A Comparative Analysis of Object Detection Metrics with a Companion        #
+#                       Open-Source Toolkit},                                                      #
+#     journal        = {Electronics},                                                              #
+#     volume         = {10},                                                                       #
+#     year           = {2021},                                                                     #
+#     number         = {3},                                                                        #
+#     article-number = {279},                                                                      #
+#     url            = {https://www.mdpi.com/2079-9292/10/3/279},                                  #
+#     issn           = {2079-9292},                                                                #
+#     doi            = {10.3390/electronics10030279}, }                                            #
+#                                                                                                  #
+####################################################################################################
+
+
+Folder /root/DL-course/prj_2/Object-Detection-Metrics/results already exists and may contain important results.
+
+Enter 'Y' to continue. WARNING: THIS WILL REMOVE ALL THE CONTENTS OF THE FOLDER!
+Or enter 'N' to abort and choose another folder to save the results.
+AP: 94.44% (aeroplane)
+AP: 73.91% (bicycle)
+AP: 68.62% (bird)
+AP: 77.24% (boat)
+AP: 67.68% (bottle)
+AP: 93.33% (bus)
+AP: 93.74% (car)
+AP: 90.53% (cat)
+AP: 73.39% (chair)
+AP: 85.39% (cow)
+AP: 48.48% (diningtable)
+AP: 66.26% (dog)
+AP: 93.69% (horse)
+AP: 74.85% (motorbike)
+AP: 86.34% (person)
+AP: 79.98% (pottedplant)
+AP: 64.44% (sheep)
+AP: 75.73% (sofa)
+AP: 60.17% (train)
+AP: 81.68% (tvmonitor)
+mAP: 77.49%
+
+=== faster_rcnn_coco ===
+
+
+####################################################################################################
+#                                                                                                  #
+# THE CURRENT VERSION WAS UPDATED WITH A VISUAL INTERFACE, INCLUDING MORE METRICS AND SUPPORTING   #
+# OTHER FILE FORMATS.                                                                              #
+#                                                                                                  #
+# PLEASE ACCESS IT ACCESSED AT:                                                                    #
+# https://github.com/rafaelpadilla/review_object_detection_metrics                                 #
+#                                                                                                  #
+# @Article{electronics10030279,                                                                    #
+#     author         = {Padilla, Rafael and Passos, Wesley L. and Dias, Thadeu L. B. and Netto,    #
+#                       Sergio L. and da Silva, Eduardo A. B.},                                    #
+#     title          = {A Comparative Analysis of Object Detection Metrics with a Companion        #
+#                       Open-Source Toolkit},                                                      #
+#     journal        = {Electronics},                                                              #
+#     volume         = {10},                                                                       #
+#     year           = {2021},                                                                     #
+#     number         = {3},                                                                        #
+#     article-number = {279},                                                                      #
+#     url            = {https://www.mdpi.com/2079-9292/10/3/279},                                  #
+#     issn           = {2079-9292},                                                                #
+#     doi            = {10.3390/electronics10030279}, }                                            #
+#                                                                                                  #
+####################################################################################################
+
+
+Folder /root/DL-course/prj_2/Object-Detection-Metrics/results already exists and may contain important results.
+
+Enter 'Y' to continue. WARNING: THIS WILL REMOVE ALL THE CONTENTS OF THE FOLDER!
+Or enter 'N' to abort and choose another folder to save the results.
+AP: 69.00% (airplane)
+AP: 37.50% (apple)
+AP: 31.93% (backpack)
+AP: 45.00% (banana)
+AP: 28.19% (baseball_bat)
+AP: 38.58% (baseball_glove)
+AP: 100.00% (bear)
+AP: 50.49% (bed)
+AP: 39.93% (bench)
+AP: 52.70% (bicycle)
+AP: 45.33% (bird)
+AP: 59.31% (boat)
+AP: 28.80% (book)
+AP: 51.83% (bottle)
+AP: 41.30% (bowl)
+AP: 58.61% (broccoli)
+AP: 70.39% (bus)
+AP: 44.47% (cake)
+AP: 68.73% (car)
+AP: 10.08% (carrot)
+AP: 78.46% (cat)
+AP: 34.27% (cell_phone)
+AP: 33.16% (chair)
+AP: 61.23% (clock)
+AP: 63.00% (couch)
+AP: 54.71% (cow)
+AP: 30.70% (cup)
+AP: 40.60% (dining_table)
+AP: 51.78% (dog)
+AP: 42.84% (donut)
+AP: 84.27% (elephant)
+AP: 73.71% (fire_hydrant)
+AP: 18.78% (fork)
+AP: 72.14% (frisbee)
+AP: 93.37% (giraffe)
+AP: 11.08% (handbag)
+AP: 77.96% (horse)
+AP: 4.86% (hot_dog)
+AP: 78.33% (keyboard)
+AP: 43.88% (kite)
+AP: 27.38% (knife)
+AP: 67.67% (laptop)
+AP: 71.71% (microwave)
+AP: 52.47% (motorcycle)
+AP: 57.56% (mouse)
+AP: 63.35% (orange)
+AP: 39.05% (oven)
+AP: 82.10% (parking_meter)
+AP: 79.75% (person)
+AP: 70.81% (pizza)
+AP: 43.75% (potted_plant)
+AP: 36.07% (refrigerator)
+AP: 42.06% (remote)
+AP: 53.68% (sandwich)
+AP: 0.00% (scissors)
+AP: 33.67% (sheep)
+AP: 71.45% (sink)
+AP: 71.03% (skateboard)
+AP: 47.33% (skis)
+AP: 77.59% (snowboard)
+AP: 25.65% (spoon)
+AP: 68.88% (sports_ball)
+AP: 50.00% (stop_sign)
+AP: 28.46% (suitcase)
+AP: 71.45% (surfboard)
+AP: 66.22% (teddy_bear)
+AP: 71.66% (tennis_racket)
+AP: 58.34% (tie)
+AP: 64.17% (toilet)
+AP: 30.95% (toothbrush)
+AP: 53.14% (traffic_light)
+AP: 71.39% (train)
+AP: 44.80% (truck)
+AP: 77.06% (tv)
+AP: 39.99% (umbrella)
+AP: 57.19% (vase)
+AP: 43.00% (wine_glass)
+AP: 92.33% (zebra)
+mAP: 52.88%
+
+=== ssd_voc ===
+
+
+####################################################################################################
+#                                                                                                  #
+# THE CURRENT VERSION WAS UPDATED WITH A VISUAL INTERFACE, INCLUDING MORE METRICS AND SUPPORTING   #
+# OTHER FILE FORMATS.                                                                              #
+#                                                                                                  #
+# PLEASE ACCESS IT ACCESSED AT:                                                                    #
+# https://github.com/rafaelpadilla/review_object_detection_metrics                                 #
+#                                                                                                  #
+# @Article{electronics10030279,                                                                    #
+#     author         = {Padilla, Rafael and Passos, Wesley L. and Dias, Thadeu L. B. and Netto,    #
+#                       Sergio L. and da Silva, Eduardo A. B.},                                    #
+#     title          = {A Comparative Analysis of Object Detection Metrics with a Companion        #
+#                       Open-Source Toolkit},                                                      #
+#     journal        = {Electronics},                                                              #
+#     volume         = {10},                                                                       #
+#     year           = {2021},                                                                     #
+#     number         = {3},                                                                        #
+#     article-number = {279},                                                                      #
+#     url            = {https://www.mdpi.com/2079-9292/10/3/279},                                  #
+#     issn           = {2079-9292},                                                                #
+#     doi            = {10.3390/electronics10030279}, }                                            #
+#                                                                                                  #
+####################################################################################################
+
+
+Folder /root/DL-course/prj_2/Object-Detection-Metrics/results already exists and may contain important results.
+
+Enter 'Y' to continue. WARNING: THIS WILL REMOVE ALL THE CONTENTS OF THE FOLDER!
+Or enter 'N' to abort and choose another folder to save the results.
+AP: 66.30% (aeroplane)
+AP: 22.51% (bicycle)
+AP: 45.57% (bird)
+AP: 38.02% (boat)
+AP: 44.30% (bottle)
+AP: 8.22% (bus)
+AP: 59.33% (car)
+AP: 78.33% (cat)
+AP: 52.62% (chair)
+AP: 38.36% (cow)
+AP: 15.88% (diningtable)
+AP: 44.30% (dog)
+AP: 64.80% (horse)
+AP: 40.57% (motorbike)
+AP: 75.88% (person)
+AP: 16.90% (pottedplant)
+AP: 44.25% (sheep)
+AP: 49.36% (sofa)
+AP: 44.09% (train)
+AP: 50.66% (tvmonitor)
+mAP: 45.01%
+
+=== ssd_coco ===
+
+
+####################################################################################################
+#                                                                                                  #
+# THE CURRENT VERSION WAS UPDATED WITH A VISUAL INTERFACE, INCLUDING MORE METRICS AND SUPPORTING   #
+# OTHER FILE FORMATS.                                                                              #
+#                                                                                                  #
+# PLEASE ACCESS IT ACCESSED AT:                                                                    #
+# https://github.com/rafaelpadilla/review_object_detection_metrics                                 #
+#                                                                                                  #
+# @Article{electronics10030279,                                                                    #
+#     author         = {Padilla, Rafael and Passos, Wesley L. and Dias, Thadeu L. B. and Netto,    #
+#                       Sergio L. and da Silva, Eduardo A. B.},                                    #
+#     title          = {A Comparative Analysis of Object Detection Metrics with a Companion        #
+#                       Open-Source Toolkit},                                                      #
+#     journal        = {Electronics},                                                              #
+#     volume         = {10},                                                                       #
+#     year           = {2021},                                                                     #
+#     number         = {3},                                                                        #
+#     article-number = {279},                                                                      #
+#     url            = {https://www.mdpi.com/2079-9292/10/3/279},                                  #
+#     issn           = {2079-9292},                                                                #
+#     doi            = {10.3390/electronics10030279}, }                                            #
+#                                                                                                  #
+####################################################################################################
+
+
+Folder /root/DL-course/prj_2/Object-Detection-Metrics/results already exists and may contain important results.
+
+Enter 'Y' to continue. WARNING: THIS WILL REMOVE ALL THE CONTENTS OF THE FOLDER!
+Or enter 'N' to abort and choose another folder to save the results.
+AP: 37.45% (airplane)
+AP: 0.45% (apple)
+AP: 2.26% (backpack)
+AP: 8.49% (banana)
+AP: 3.99% (baseball_bat)
+AP: 0.00% (baseball_glove)
+AP: 9.09% (bear)
+AP: 8.74% (bed)
+AP: 8.03% (bench)
+AP: 18.46% (bicycle)
+AP: 6.59% (bird)
+AP: 25.17% (boat)
+AP: 8.14% (book)
+AP: 16.63% (bottle)
+AP: 16.07% (bowl)
+AP: 47.93% (broccoli)
+AP: 51.80% (bus)
+AP: 11.80% (cake)
+AP: 32.99% (car)
+AP: 0.18% (carrot)
+AP: 66.10% (cat)
+AP: 7.55% (cell_phone)
+AP: 22.55% (chair)
+AP: 17.79% (clock)
+AP: 46.54% (couch)
+AP: 19.28% (cow)
+AP: 7.80% (cup)
+AP: 34.12% (dining_table)
+AP: 36.02% (dog)
+AP: 12.34% (donut)
+AP: 15.87% (elephant)
+AP: 1.68% (fire_hydrant)
+AP: 7.07% (fork)
+AP: 10.00% (frisbee)
+AP: 52.70% (giraffe)
+AP: 0.18% (handbag)
+AP: 52.71% (horse)
+AP: 2.98% (hot_dog)
+AP: 38.39% (keyboard)
+AP: 4.56% (kite)
+AP: 0.33% (knife)
+AP: 47.87% (laptop)
+AP: 14.29% (microwave)
+AP: 27.60% (motorcycle)
+AP: 0.00% (mouse)
+AP: 43.42% (orange)
+AP: 31.11% (oven)
+AP: 14.29% (parking_meter)
+AP: 60.68% (person)
+AP: 27.97% (pizza)
+AP: 22.39% (potted_plant)
+AP: 2.76% (refrigerator)
+AP: 0.26% (remote)
+AP: 12.47% (sandwich)
+AP: 0.00% (scissors)
+AP: 17.62% (sheep)
+AP: 25.36% (sink)
+AP: 26.40% (skateboard)
+AP: 15.89% (skis)
+AP: 23.00% (snowboard)
+AP: 5.74% (spoon)
+AP: 0.00% (sports_ball)
+AP: 25.00% (stop_sign)
+AP: 0.20% (suitcase)
+AP: 15.31% (surfboard)
+AP: 57.99% (teddy_bear)
+AP: 33.86% (tennis_racket)
+AP: 28.95% (tie)
+AP: 34.02% (toilet)
+AP: 0.00% (toothbrush)
+AP: 1.49% (traffic_light)
+AP: 47.20% (train)
+AP: 4.62% (truck)
+AP: 44.08% (tv)
+AP: 7.72% (umbrella)
+AP: 6.01% (vase)
+AP: 0.00% (wine_glass)
+AP: 19.29% (zebra)
+mAP: 19.43%
+/root/DL-course/prj_2/Object-Detection-Metrics/lib/Evaluator.py:129: RuntimeWarning: invalid value encountered in divide
+  rec = acc_TP / npos
+
+=== yolo_voc ===
+
+
+####################################################################################################
+#                                                                                                  #
+# THE CURRENT VERSION WAS UPDATED WITH A VISUAL INTERFACE, INCLUDING MORE METRICS AND SUPPORTING   #
+# OTHER FILE FORMATS.                                                                              #
+#                                                                                                  #
+# PLEASE ACCESS IT ACCESSED AT:                                                                    #
+# https://github.com/rafaelpadilla/review_object_detection_metrics                                 #
+#                                                                                                  #
+# @Article{electronics10030279,                                                                    #
+#     author         = {Padilla, Rafael and Passos, Wesley L. and Dias, Thadeu L. B. and Netto,    #
+#                       Sergio L. and da Silva, Eduardo A. B.},                                    #
+#     title          = {A Comparative Analysis of Object Detection Metrics with a Companion        #
+#                       Open-Source Toolkit},                                                      #
+#     journal        = {Electronics},                                                              #
+#     volume         = {10},                                                                       #
+#     year           = {2021},                                                                     #
+#     number         = {3},                                                                        #
+#     article-number = {279},                                                                      #
+#     url            = {https://www.mdpi.com/2079-9292/10/3/279},                                  #
+#     issn           = {2079-9292},                                                                #
+#     doi            = {10.3390/electronics10030279}, }                                            #
+#                                                                                                  #
+####################################################################################################
+
+
+Folder /root/DL-course/prj_2/Object-Detection-Metrics/results already exists and may contain important results.
+
+Enter 'Y' to continue. WARNING: THIS WILL REMOVE ALL THE CONTENTS OF THE FOLDER!
+Or enter 'N' to abort and choose another folder to save the results.
+AP: 50.00% (aeroplane)
+AP: 25.00% (bicycle)
+AP: 24.25% (bird)
+AP: 36.86% (boat)
+AP: 40.29% (bottle)
+AP: 20.00% (bus)
+AP: 60.53% (car)
+AP: 68.33% (cat)
+AP: 14.34% (chair)
+AP: 0.00% (cow)
+AP: 16.67% (diningtable)
+AP: 35.14% (dog)
+AP: 87.32% (horse)
+AP: 62.99% (motorbike)
+AP: 68.68% (person)
+AP: 32.73% (pottedplant)
+AP: 0.00% (sheep)
+AP: 30.43% (sofa)
+AP: 25.71% (train)
+AP: 23.08% (tvmonitor)
+mAP: 36.12%
+
+=== yolo_coco ===
+
+
+####################################################################################################
+#                                                                                                  #
+# THE CURRENT VERSION WAS UPDATED WITH A VISUAL INTERFACE, INCLUDING MORE METRICS AND SUPPORTING   #
+# OTHER FILE FORMATS.                                                                              #
+#                                                                                                  #
+# PLEASE ACCESS IT ACCESSED AT:                                                                    #
+# https://github.com/rafaelpadilla/review_object_detection_metrics                                 #
+#                                                                                                  #
+# @Article{electronics10030279,                                                                    #
+#     author         = {Padilla, Rafael and Passos, Wesley L. and Dias, Thadeu L. B. and Netto,    #
+#                       Sergio L. and da Silva, Eduardo A. B.},                                    #
+#     title          = {A Comparative Analysis of Object Detection Metrics with a Companion        #
+#                       Open-Source Toolkit},                                                      #
+#     journal        = {Electronics},                                                              #
+#     volume         = {10},                                                                       #
+#     year           = {2021},                                                                     #
+#     number         = {3},                                                                        #
+#     article-number = {279},                                                                      #
+#     url            = {https://www.mdpi.com/2079-9292/10/3/279},                                  #
+#     issn           = {2079-9292},                                                                #
+#     doi            = {10.3390/electronics10030279}, }                                            #
+#                                                                                                  #
+####################################################################################################
+
+
+Folder /root/DL-course/prj_2/Object-Detection-Metrics/results already exists and may contain important results.
+
+Enter 'Y' to continue. WARNING: THIS WILL REMOVE ALL THE CONTENTS OF THE FOLDER!
+Or enter 'N' to abort and choose another folder to save the results.
+AP: 89.10% (airplane)
+AP: 46.11% (apple)
+AP: 12.18% (backpack)
+AP: 20.27% (banana)
+AP: 20.41% (baseball_bat)
+AP: 37.50% (baseball_glove)
+AP: 100.00% (bear)
+AP: 67.64% (bed)
+AP: 23.05% (bench)
+AP: 35.71% (bicycle)
+AP: 57.39% (bird)
+AP: 42.45% (boat)
+AP: 10.25% (book)
+AP: 42.69% (bottle)
+AP: 31.37% (bowl)
+AP: 52.94% (broccoli)
+AP: 61.11% (bus)
+AP: 52.39% (cake)
+AP: 57.11% (car)
+AP: 37.37% (carrot)
+AP: 78.75% (cat)
+AP: 36.22% (cell_phone)
+AP: 32.71% (chair)
+AP: 52.65% (clock)
+AP: 66.76% (couch)
+AP: 30.92% (cow)
+AP: 24.44% (cup)
+AP: 40.96% (dining_table)
+AP: 62.44% (dog)
+AP: 69.44% (donut)
+AP: 86.61% (elephant)
+AP: 63.64% (fire_hydrant)
+AP: 21.11% (fork)
+AP: 78.89% (frisbee)
+AP: 94.14% (giraffe)
+AP: 8.41% (handbag)
+AP: 69.08% (horse)
+AP: 0.00% (hot_dog)
+AP: 54.70% (keyboard)
+AP: 54.39% (kite)
+AP: 22.34% (knife)
+AP: 60.86% (laptop)
+AP: 48.81% (microwave)
+AP: 46.68% (motorcycle)
+AP: 71.43% (mouse)
+AP: 58.69% (orange)
+AP: 49.19% (oven)
+AP: 94.05% (parking_meter)
+AP: 66.64% (person)
+AP: 78.75% (pizza)
+AP: 38.79% (potted_plant)
+AP: 24.34% (refrigerator)
+AP: 38.33% (remote)
+AP: 43.00% (sandwich)
+AP: 0.00% (scissors)
+AP: 48.90% (sheep)
+AP: 55.91% (sink)
+AP: 60.90% (skateboard)
+AP: 27.40% (skis)
+AP: 78.57% (snowboard)
+AP: 17.28% (spoon)
+AP: 80.17% (sports_ball)
+AP: 31.25% (stop_sign)
+AP: 46.47% (suitcase)
+AP: 59.02% (surfboard)
+AP: 51.67% (teddy_bear)
+AP: 52.38% (tennis_racket)
+AP: 55.77% (tie)
+AP: 69.48% (toilet)
+AP: 8.33% (toothbrush)
+AP: 48.18% (traffic_light)
+AP: 76.39% (train)
+AP: 20.08% (truck)
+AP: 66.19% (tv)
+AP: 43.02% (umbrella)
+AP: 35.91% (vase)
+AP: 26.39% (wine_glass)
+AP: 71.43% (zebra)
+mAP: 48.67%
+
+=== detr_voc ===
+
+
+####################################################################################################
+#                                                                                                  #
+# THE CURRENT VERSION WAS UPDATED WITH A VISUAL INTERFACE, INCLUDING MORE METRICS AND SUPPORTING   #
+# OTHER FILE FORMATS.                                                                              #
+#                                                                                                  #
+# PLEASE ACCESS IT ACCESSED AT:                                                                    #
+# https://github.com/rafaelpadilla/review_object_detection_metrics                                 #
+#                                                                                                  #
+# @Article{electronics10030279,                                                                    #
+#     author         = {Padilla, Rafael and Passos, Wesley L. and Dias, Thadeu L. B. and Netto,    #
+#                       Sergio L. and da Silva, Eduardo A. B.},                                    #
+#     title          = {A Comparative Analysis of Object Detection Metrics with a Companion        #
+#                       Open-Source Toolkit},                                                      #
+#     journal        = {Electronics},                                                              #
+#     volume         = {10},                                                                       #
+#     year           = {2021},                                                                     #
+#     number         = {3},                                                                        #
+#     article-number = {279},                                                                      #
+#     url            = {https://www.mdpi.com/2079-9292/10/3/279},                                  #
+#     issn           = {2079-9292},                                                                #
+#     doi            = {10.3390/electronics10030279}, }                                            #
+#                                                                                                  #
+####################################################################################################
+
+
+Folder /root/DL-course/prj_2/Object-Detection-Metrics/results already exists and may contain important results.
+
+Enter 'Y' to continue. WARNING: THIS WILL REMOVE ALL THE CONTENTS OF THE FOLDER!
+Or enter 'N' to abort and choose another folder to save the results.
+AP: 0.00% (aeroplane)
+AP: 0.00% (bicycle)
+AP: 0.00% (bird)
+AP: 0.00% (boat)
+AP: 0.00% (bottle)
+AP: 0.00% (bus)
+AP: 0.00% (car)
+AP: 0.00% (cat)
+AP: 0.00% (chair)
+AP: 0.00% (cow)
+AP: 0.00% (diningtable)
+AP: 0.00% (dog)
+AP: 0.00% (horse)
+AP: 0.00% (motorbike)
+AP: 0.00% (person)
+AP: 0.00% (pottedplant)
+AP: 0.00% (sofa)
+AP: 0.00% (train)
+AP: 0.00% (tvmonitor)
+mAP: 0.00%
+
+=== detr_coco ===
+
+
+####################################################################################################
+#                                                                                                  #
+# THE CURRENT VERSION WAS UPDATED WITH A VISUAL INTERFACE, INCLUDING MORE METRICS AND SUPPORTING   #
+# OTHER FILE FORMATS.                                                                              #
+#                                                                                                  #
+# PLEASE ACCESS IT ACCESSED AT:                                                                    #
+# https://github.com/rafaelpadilla/review_object_detection_metrics                                 #
+#                                                                                                  #
+# @Article{electronics10030279,                                                                    #
+#     author         = {Padilla, Rafael and Passos, Wesley L. and Dias, Thadeu L. B. and Netto,    #
+#                       Sergio L. and da Silva, Eduardo A. B.},                                    #
+#     title          = {A Comparative Analysis of Object Detection Metrics with a Companion        #
+#                       Open-Source Toolkit},                                                      #
+#     journal        = {Electronics},                                                              #
+#     volume         = {10},                                                                       #
+#     year           = {2021},                                                                     #
+#     number         = {3},                                                                        #
+#     article-number = {279},                                                                      #
+#     url            = {https://www.mdpi.com/2079-9292/10/3/279},                                  #
+#     issn           = {2079-9292},                                                                #
+#     doi            = {10.3390/electronics10030279}, }                                            #
+#                                                                                                  #
+####################################################################################################
+
+
+Folder /root/DL-course/prj_2/Object-Detection-Metrics/results already exists and may contain important results.
+
+Enter 'Y' to continue. WARNING: THIS WILL REMOVE ALL THE CONTENTS OF THE FOLDER!
+Or enter 'N' to abort and choose another folder to save the results.
+AP: 0.00% (airplane)
+AP: 0.00% (apple)
+AP: 0.00% (backpack)
+AP: 0.00% (banana)
+AP: 0.00% (baseball_bat)
+AP: 0.00% (baseball_glove)
+AP: 0.00% (bear)
+AP: 0.00% (bed)
+AP: 0.00% (bench)
+AP: 0.00% (bicycle)
+AP: 0.00% (bird)
+AP: 0.00% (boat)
+AP: 0.00% (book)
+AP: 0.00% (bottle)
+AP: 0.00% (bowl)
+AP: 0.00% (broccoli)
+AP: 0.00% (bus)
+AP: 0.00% (cake)
+AP: 0.00% (car)
+AP: 0.00% (carrot)
+AP: 0.00% (cat)
+AP: 0.00% (cell_phone)
+AP: 0.00% (chair)
+AP: 0.00% (clock)
+AP: 0.00% (couch)
+AP: 0.00% (cow)
+AP: 0.00% (cup)
+AP: 0.00% (dining_table)
+AP: 0.00% (dog)
+AP: 0.00% (donut)
+AP: 0.00% (elephant)
+AP: 0.00% (fire_hydrant)
+AP: 0.00% (fork)
+AP: 0.00% (frisbee)
+AP: 0.00% (giraffe)
+AP: 0.00% (handbag)
+AP: 0.00% (horse)
+AP: 0.00% (hot_dog)
+AP: 0.00% (keyboard)
+AP: 0.00% (kite)
+AP: 0.00% (knife)
+AP: 0.00% (laptop)
+AP: 0.00% (microwave)
+AP: 0.00% (motorcycle)
+AP: 0.00% (mouse)
+AP: 0.00% (orange)
+AP: 0.00% (oven)
+AP: 0.00% (parking_meter)
+AP: 0.00% (person)
+AP: 0.00% (pizza)
+AP: 0.00% (potted_plant)
+AP: 0.00% (refrigerator)
+AP: 0.00% (remote)
+AP: 0.00% (sandwich)
+AP: 0.00% (sheep)
+AP: 0.00% (sink)
+AP: 0.00% (skateboard)
+AP: 0.00% (skis)
+AP: 0.00% (snowboard)
+AP: 0.00% (spoon)
+AP: 0.00% (sports_ball)
+AP: 0.00% (stop_sign)
+AP: 0.00% (suitcase)
+AP: 0.00% (surfboard)
+AP: 0.00% (teddy_bear)
+AP: 0.00% (tennis_racket)
+AP: 0.00% (tie)
+AP: 0.00% (toilet)
+AP: 0.00% (toothbrush)
+AP: 0.00% (traffic_light)
+AP: 0.00% (train)
+AP: 0.00% (truck)
+AP: 0.00% (tv)
+AP: 0.00% (umbrella)
+AP: 0.00% (vase)
+AP: 0.00% (wine_glass)
+AP: 0.00% (zebra)
+mAP: 0.00%
+
