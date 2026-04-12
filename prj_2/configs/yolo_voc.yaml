@@ -5,7 +5,7 @@ model:
 
 dataset:
   name: voc
-  root: ./data/VOCdevkit
+  root: ./data
   max_train: 500
   max_val: 200
   image_size: 640

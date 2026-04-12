@@ -5,7 +5,7 @@ model:
 
 dataset:
   name: voc
-  root: ./data/VOCdevkit
+  root: ./data
   max_train: 300  # smaller for DETR — it's slow
   max_val: 100
   image_size: 800
