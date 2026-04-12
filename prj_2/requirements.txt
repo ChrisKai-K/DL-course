@@ -7,3 +7,4 @@ pyyaml
 Pillow
 numpy
 tqdm
+timm
