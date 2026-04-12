@@ -81,7 +81,7 @@ class YOLODetector(BaseDetector):
     def train_full(self, train_dataset, val_dataset):
         """YOLO uses its own training loop — call this instead of train_one_epoch."""
         train_cfg = self.config["training"]
-        ckpt_dir = self.config["output"]["checkpoint_dir"]
+        ckpt_dir = os.path.abspath(self.config["output"]["checkpoint_dir"])
         os.makedirs(ckpt_dir, exist_ok=True)
 
         yaml_path = self._build_data_yaml(train_dataset, val_dataset)
@@ -100,7 +100,7 @@ class YOLODetector(BaseDetector):
         )
         self._trained = True
 
-        # Copy best weights to checkpoint dir
+        # Copy best weights to checkpoint dir root
         best_pt = os.path.join(ckpt_dir, "run", "weights", "best.pt")
         if os.path.exists(best_pt):
             shutil.copy(best_pt, os.path.join(ckpt_dir, "best.pt"))
