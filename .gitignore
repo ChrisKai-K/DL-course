@@ -1,5 +1,18 @@
-node_modules/
+# Ignore everything by default.
+/*
+
+# Keep git metadata files and project 4 visible.
+!/.gitignore
+!/prj_4/
+!/prj_4/**
+
+# Runtime/cache artifacts, including inside prj_4.
 __pycache__/
 *.pyc
 *.pyo
 .DS_Store
+node_modules/
+
+# Large/generated experiment artifacts should not be committed.
+/prj_4/outputs/
+/prj_4/*.tar.gz

@@ -1,0 +1,21 @@
+run_name: clip_vitb32_lora_cub
+data_root: ../data/cub_200_2011
+model_name: ViT-B-32
+pretrained: openai
+method: lora
+num_classes: 200
+epochs: 10
+batch_size: 64
+num_workers: 8
+learning_rate: 0.0005
+weight_decay: 0.01
+warmup_epochs: 1
+amp: true
+seed: 42
+lora:
+  rank: 8
+  alpha: 16
+  dropout: 0.1
+  target_keywords:
+    - mlp.c_fc
+    - mlp.c_proj

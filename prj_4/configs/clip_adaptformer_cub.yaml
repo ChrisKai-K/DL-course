@@ -1,0 +1,19 @@
+run_name: clip_vitb32_adaptformer_cub
+data_root: ../data/cub_200_2011
+model_name: ViT-B-32
+pretrained: openai
+method: adaptformer
+num_classes: 200
+epochs: 10
+batch_size: 64
+num_workers: 8
+learning_rate: 0.0005
+weight_decay: 0.01
+warmup_epochs: 1
+amp: true
+seed: 42
+adaptformer:
+  reduction: 4
+  scale: 0.1
+  dropout: 0.1
+  target_keyword: mlp
