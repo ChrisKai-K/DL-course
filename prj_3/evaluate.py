@@ -1,93 +1,104 @@
-"""
-YOLOv8 模型评估脚本
-在验证集上计算 mAP、Precision、Recall 等指标。
-"""
+from __future__ import annotations
 
 import argparse
 import json
 from pathlib import Path
 
-from ultralytics import YOLO
+import matplotlib.pyplot as plt
+import torch
+from torch.utils.data import DataLoader
+from tqdm import tqdm
+
+from src.data import FIVESDataset, find_pairs, split_pairs
+from src.metrics import merge_stats, segmentation_stats
+from src.model import UNet
 
 
-def parse_args():
-    parser = argparse.ArgumentParser(description="YOLOv8 模型评估")
-    parser.add_argument("--model", type=str, required=True,
-                        help="训练好的模型权重路径 (如 outputs/train/weights/best.pt)")
-    parser.add_argument("--data", type=str, default="VOC.yaml",
-                        help="数据集配置 (默认: VOC.yaml)")
-    parser.add_argument("--output", type=str, default="outputs/eval",
-                        help="评估结果输出目录 (默认: outputs/eval)")
-    parser.add_argument("--imgsz", type=int, default=640,
-                        help="评估图像尺寸 (默认: 640)")
-    parser.add_argument("--batch", type=int, default=16,
-                        help="批次大小 (默认: 16)")
-    parser.add_argument("--device", type=str, default="auto",
-                        help="评估设备 (默认: auto)")
-    parser.add_argument("--conf", type=float, default=0.001,
-                        help="置信度阈值 (默认: 0.001，评估时使用低阈值)")
-    parser.add_argument("--iou", type=float, default=0.6,
-                        help="NMS IoU 阈值 (默认: 0.6)")
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Evaluate a trained UNet segmentation checkpoint.")
+    parser.add_argument("--model", type=str, default="outputs/checkpoints/best.pt", help="Checkpoint path.")
+    parser.add_argument("--data", type=str, default="data/FIVES", help="FIVES dataset root.")
+    parser.add_argument("--output", type=str, default="outputs/eval", help="Evaluation output directory.")
+    parser.add_argument("--batch", type=int, default=4, help="Batch size.")
+    parser.add_argument("--imgsz", type=int, default=512, help="Evaluation image size.")
+    parser.add_argument("--threshold", type=float, default=0.5, help="Mask probability threshold.")
+    parser.add_argument("--device", type=str, default="auto", help="auto, cpu, cuda, or mps.")
+    parser.add_argument("--num-workers", type=int, default=2, help="DataLoader workers.")
+    parser.add_argument("--seed", type=int, default=42, help="Split seed.")
     return parser.parse_args()
 
 
-def main():
-    args = parse_args()
+def choose_device(name: str) -> torch.device:
+    if name != "auto":
+        return torch.device(name)
+    if torch.cuda.is_available():
+        return torch.device("cuda")
+    if torch.backends.mps.is_available():
+        return torch.device("mps")
+    return torch.device("cpu")
 
-    model_path = Path(args.model)
-    if not model_path.exists():
-        raise FileNotFoundError(f"模型文件不存在: {model_path}")
+
+def save_confusion_matrix(metrics: dict[str, float], output: Path) -> None:
+    matrix = [[metrics["tp"], metrics["fn"]], [metrics["fp"], metrics["tn"]]]
+    fig, ax = plt.subplots(figsize=(4, 4), dpi=160)
+    im = ax.imshow(matrix, cmap="Blues")
+    ax.set_xticks([0, 1], labels=["Pred vessel", "Pred background"], rotation=25, ha="right")
+    ax.set_yticks([0, 1], labels=["True vessel", "True background"])
+    for y in range(2):
+        for x in range(2):
+            ax.text(x, y, f"{int(matrix[y][x])}", ha="center", va="center", color="black")
+    ax.set_title("Pixel Confusion Matrix")
+    fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+    fig.tight_layout()
+    fig.savefig(output)
+    plt.close(fig)
+
+
+def main() -> None:
+    args = parse_args()
+    checkpoint_path = Path(args.model)
+    if not checkpoint_path.exists():
+        raise FileNotFoundError(f"Checkpoint not found: {checkpoint_path}")
 
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"加载模型: {model_path}")
-    model = YOLO(str(model_path))
-
-    print(f"数据集: {args.data}")
-
-    # 在验证集上评估
-    results = model.val(
-        data=args.data,
-        imgsz=args.imgsz,
-        batch=args.batch,
-        device=args.device,
-        conf=args.conf,
-        iou=args.iou,
-        project=str(output_dir),
-        name="",
-        exist_ok=True,
+    pairs = find_pairs(args.data)
+    _, val_pairs = split_pairs(pairs, seed=args.seed)
+    loader = DataLoader(
+        FIVESDataset(val_pairs, args.imgsz, augment=False),
+        batch_size=args.batch,
+        shuffle=False,
+        num_workers=args.num_workers,
+        pin_memory=torch.cuda.is_available(),
     )
 
-    # 提取关键指标
-    metrics = {
-        "mAP@0.5": float(results.box.map50),
-        "mAP@0.5:0.95": float(results.box.map),
-        "mAP@0.75": float(results.box.map75),
-        "precision": float(results.box.mp),
-        "recall": float(results.box.mr),
-    }
+    device = choose_device(args.device)
+    checkpoint = torch.load(checkpoint_path, map_location=device)
+    base_channels = checkpoint.get("args", {}).get("base_channels", 32)
+    model = UNet(base_channels=base_channels).to(device)
+    model.load_state_dict(checkpoint["model"])
+    model.eval()
 
-    print(f"\n=== 评估结果 ===")
-    for k, v in metrics.items():
-        print(f"  {k}: {v:.4f}")
+    stats = []
+    with torch.no_grad():
+        for batch in tqdm(loader):
+            images = batch["image"].to(device)
+            masks = batch["mask"].to(device)
+            logits = model(images)
+            stats.append(segmentation_stats(logits, masks, threshold=args.threshold))
 
-    # 保存评估结果到 JSON
-    result_file = output_dir / "metrics.json"
-    with open(result_file, "w", encoding="utf-8") as f:
-        json.dump(metrics, f, indent=2, ensure_ascii=False)
+    metrics = merge_stats(stats)
+    metrics["threshold"] = args.threshold
+    metrics["num_samples"] = len(val_pairs)
 
-    print(f"\n评估结果已保存到: {result_file}")
+    (output_dir / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
+    save_confusion_matrix(metrics, output_dir / "confusion_matrix.png")
 
-    # 各类别 AP 信息
-    print(f"\n=== 各类别 AP@0.5 ===")
-    if hasattr(results, 'boxes') and hasattr(results.boxes, 'ap_class_index'):
-        ap_per_class = results.boxes.ap50  # shape: [num_classes]
-        # 类别名称从 results.names 获取
-        names = results.names
-        for i, ap in enumerate(ap_per_class):
-            class_name = names.get(i, f"class_{i}")
-            print(f"  {class_name}: {float(ap):.4f}")
+    print("Evaluation metrics:")
+    for key in ("accuracy", "precision", "recall", "dice", "iou"):
+        print(f"  {key}: {metrics[key]:.4f}")
+    print(f"Saved metrics to {output_dir / 'metrics.json'}")
 
 
 if __name__ == "__main__":
