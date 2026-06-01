@@ -1,0 +1,6 @@
+{
+  "best_val_dice": 0.9157159924326685,
+  "pairs": 800,
+  "train_pairs": 600,
+  "val_pairs": 200
+}
