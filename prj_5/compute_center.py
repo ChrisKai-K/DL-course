@@ -15,6 +15,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--config", default="configs/semfew_miniimagenet.yaml")
     parser.add_argument("--data-root", default=None)
     parser.add_argument("--semantic-path", default=None)
+    parser.add_argument("--semantic-encoder", default=None, choices=["hash", "clip"])
     parser.add_argument("--split", default="train", choices=["train", "val", "test"])
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--output", default="outputs/centers.pt")
@@ -35,6 +36,8 @@ def main() -> None:
         config["data_root"] = args.data_root
     if args.semantic_path is not None:
         config["semantic_path"] = args.semantic_path
+    if args.semantic_encoder is not None:
+        config["semantic_encoder"] = args.semantic_encoder
     device = torch.device(args.device)
     dataset = FewShotImageFolder(
         config["data_root"], args.split, build_transform(int(config.get("image_size", 84)), train=False)
@@ -56,8 +59,15 @@ def main() -> None:
             counts[class_name] += 1
     visual_centers = {name: F.normalize(sums[name] / counts[name], dim=0) for name in dataset.classes}
 
-    semantic_bank = SemanticBank.from_file(config.get("semantic_path"), dim=int(config.get("semantic_dim", 512)))
-    semantic_centers = semantic_bank.encode(dataset.classes).cpu()
+    semantic_bank = SemanticBank.from_file(
+        config.get("semantic_path"),
+        dim=int(config.get("semantic_dim", 512)),
+        encoder=str(config.get("semantic_encoder", "hash")),
+        model_name=str(config.get("semantic_model", "ViT-B-32")),
+        pretrained=str(config.get("semantic_pretrained", "openai")),
+        checkpoint_path=config.get("semantic_checkpoint"),
+    )
+    semantic_centers = semantic_bank.encode(dataset.classes, device=device).cpu()
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     torch.save(
@@ -74,4 +84,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

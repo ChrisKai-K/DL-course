@@ -13,6 +13,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--config", default=None, help="Optional config override.")
     parser.add_argument("--data-root", default=None)
     parser.add_argument("--semantic-path", default=None)
+    parser.add_argument("--semantic-encoder", default=None, choices=["hash", "clip"])
     parser.add_argument("--split", default="test", choices=["train", "val", "test"])
     parser.add_argument("--episodes", type=int, default=None)
     parser.add_argument("--output-dir", default="outputs/test")
@@ -35,6 +36,8 @@ def main() -> None:
         config["data_root"] = args.data_root
     if args.semantic_path is not None:
         config["semantic_path"] = args.semantic_path
+    if args.semantic_encoder is not None:
+        config["semantic_encoder"] = args.semantic_encoder
 
     dataset = FewShotImageFolder(
         config["data_root"], args.split, build_transform(int(config.get("image_size", 84)), train=False)
@@ -46,7 +49,14 @@ def main() -> None:
         q_query=int(config["q_query"]),
         seed=int(config.get("seed", 42)) + 2,
     )
-    semantic_bank = SemanticBank.from_file(config.get("semantic_path"), dim=int(config.get("semantic_dim", 512)))
+    semantic_bank = SemanticBank.from_file(
+        config.get("semantic_path"),
+        dim=int(config.get("semantic_dim", 512)),
+        encoder=str(config.get("semantic_encoder", "hash")),
+        model_name=str(config.get("semantic_model", "ViT-B-32")),
+        pretrained=str(config.get("semantic_pretrained", "openai")),
+        checkpoint_path=config.get("semantic_checkpoint"),
+    )
     model = SemFewModel(
         backbone=str(config.get("backbone", "resnet18")),
         pretrained=False,
@@ -76,4 +86,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

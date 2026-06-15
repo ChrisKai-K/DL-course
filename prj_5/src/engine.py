@@ -31,11 +31,32 @@ def train_semfew(
 ) -> dict:
     output_dir.mkdir(parents=True, exist_ok=True)
     model.to(device)
-    optimizer = torch.optim.AdamW(
-        [parameter for parameter in model.parameters() if parameter.requires_grad],
-        lr=float(config.get("learning_rate", 1e-3)),
-        weight_decay=float(config.get("weight_decay", 1e-4)),
-    )
+    learning_rate = float(config.get("learning_rate", 1e-3))
+    backbone_learning_rate = float(config.get("backbone_learning_rate", learning_rate))
+    if hasattr(model, "encoder") and hasattr(model, "align"):
+        optimizer = torch.optim.AdamW(
+            [
+                {
+                    "params": [parameter for parameter in model.encoder.parameters() if parameter.requires_grad],
+                    "lr": backbone_learning_rate,
+                },
+                {
+                    "params": [
+                        parameter
+                        for name, parameter in model.named_parameters()
+                        if parameter.requires_grad and not name.startswith("encoder.")
+                    ],
+                    "lr": learning_rate,
+                },
+            ],
+            weight_decay=float(config.get("weight_decay", 1e-4)),
+        )
+    else:
+        optimizer = torch.optim.AdamW(
+            [parameter for parameter in model.parameters() if parameter.requires_grad],
+            lr=learning_rate,
+            weight_decay=float(config.get("weight_decay", 1e-4)),
+        )
     criterion = nn.CrossEntropyLoss()
     episodes = int(config.get("train_episodes", 1000))
     val_interval = int(config.get("val_interval", 100))
@@ -99,4 +120,3 @@ def evaluate_semfew(
         output = model(episode.support_images, episode.support_labels, episode.query_images, semantic_centers)
         accuracies.append(accuracy(output.logits, episode.query_labels))
     return summarize_accuracies(accuracies)
-
