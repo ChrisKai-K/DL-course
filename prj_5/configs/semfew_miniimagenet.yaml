@@ -1,10 +1,14 @@
 run_name: semfew_resnet18_miniimagenet
 data_root: data/miniImageNet
 semantic_path: outputs/semantic_descriptions.json
+semantic_encoder: clip
+semantic_model: ViT-B-32
+semantic_pretrained: openai
+semantic_checkpoint:
 image_size: 84
 backbone: resnet18
 pretrained: true
-train_backbone: false
+train_backbone: true
 semantic_dim: 512
 hidden_dim: 512
 n_way: 5
@@ -15,5 +19,6 @@ val_episodes: 100
 test_episodes: 600
 val_interval: 100
 learning_rate: 0.001
+backbone_learning_rate: 0.0001
 weight_decay: 0.0001
 seed: 42

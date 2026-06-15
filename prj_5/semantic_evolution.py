@@ -16,9 +16,8 @@ def parse_args() -> argparse.Namespace:
 def evolve_description(class_name: str) -> str:
     readable = class_name.replace("_", " ").replace("-", " ")
     return (
-        f"{readable}: a detailed visual concept. Describe the object category by common shape, "
-        f"major parts, colors, surface texture, scene context, scale, pose variation, and visual cues "
-        f"that distinguish it from visually similar categories."
+        f"A photo of a {readable}, showing its typical shape, parts, colors, surface texture, "
+        f"pose, scale, background context, and visual cues that distinguish it from similar categories."
     )
 
 
@@ -40,4 +39,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

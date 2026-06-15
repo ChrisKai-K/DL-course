@@ -14,8 +14,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--config", default="configs/semfew_miniimagenet.yaml")
     parser.add_argument("--data-root", default=None)
     parser.add_argument("--semantic-path", default=None)
+    parser.add_argument("--semantic-encoder", default=None, choices=["hash", "clip"])
     parser.add_argument("--output-dir", default="outputs")
     parser.add_argument("--episodes", type=int, default=None)
+    parser.add_argument("--val-episodes", type=int, default=None)
+    parser.add_argument("--val-interval", type=int, default=None)
     parser.add_argument("--n-way", type=int, default=None)
     parser.add_argument("--k-shot", type=int, default=None)
     parser.add_argument("--q-query", type=int, default=None)
@@ -43,8 +46,14 @@ def main() -> None:
         config["data_root"] = args.data_root
     if args.semantic_path is not None:
         config["semantic_path"] = args.semantic_path
+    if args.semantic_encoder is not None:
+        config["semantic_encoder"] = args.semantic_encoder
     if args.episodes is not None:
         config["train_episodes"] = args.episodes
+    if args.val_episodes is not None:
+        config["val_episodes"] = args.val_episodes
+    if args.val_interval is not None:
+        config["val_interval"] = args.val_interval
     if args.n_way is not None:
         config["n_way"] = args.n_way
     if args.k_shot is not None:
@@ -65,7 +74,14 @@ def main() -> None:
     }
     train_sampler = EpisodeSampler(train_set, seed=int(config.get("seed", 42)), **sampler_kwargs)
     val_sampler = EpisodeSampler(val_set, seed=int(config.get("seed", 42)) + 1, **sampler_kwargs)
-    semantic_bank = SemanticBank.from_file(config.get("semantic_path"), dim=int(config.get("semantic_dim", 512)))
+    semantic_bank = SemanticBank.from_file(
+        config.get("semantic_path"),
+        dim=int(config.get("semantic_dim", 512)),
+        encoder=str(config.get("semantic_encoder", "hash")),
+        model_name=str(config.get("semantic_model", "ViT-B-32")),
+        pretrained=str(config.get("semantic_pretrained", "openai")),
+        checkpoint_path=config.get("semantic_checkpoint"),
+    )
     model = SemFewModel(
         backbone=str(config.get("backbone", "resnet18")),
         pretrained=bool(config.get("pretrained", True)),
@@ -86,4 +102,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

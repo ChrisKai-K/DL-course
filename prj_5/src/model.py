@@ -13,6 +13,7 @@ class ResNetFeatureExtractor(nn.Module):
         super().__init__()
         if name != "resnet18":
             raise ValueError("This experiment implementation currently supports resnet18.")
+        self.train_backbone = train_backbone
         weights = models.ResNet18_Weights.DEFAULT if pretrained else None
         backbone = models.resnet18(weights=weights)
         self.feature_dim = backbone.fc.in_features
@@ -22,8 +23,19 @@ class ResNetFeatureExtractor(nn.Module):
             for parameter in self.backbone.parameters():
                 parameter.requires_grad = False
 
+    def train(self, mode: bool = True):
+        super().train(mode)
+        if not self.train_backbone:
+            self.backbone.eval()
+        return self
+
     def forward(self, images: torch.Tensor) -> torch.Tensor:
-        return F.normalize(self.backbone(images), dim=1)
+        if self.train_backbone:
+            features = self.backbone(images)
+        else:
+            with torch.no_grad():
+                features = self.backbone(images)
+        return F.normalize(features, dim=1)
 
 
 class SemAlign(nn.Module):
@@ -91,4 +103,3 @@ def compute_centers(features: torch.Tensor, labels: torch.Tensor, n_classes: int
             raise ValueError(f"Class {label} has no support examples.")
         centers.append(features[mask].mean(dim=0))
     return F.normalize(torch.stack(centers), dim=1)
-

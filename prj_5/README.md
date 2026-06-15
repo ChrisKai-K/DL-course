@@ -5,7 +5,7 @@
 - `compute_center.py`：计算视觉 center 和语义 center；
 - `train.py`：在 episode 上训练 SemAlign，并用交叉熵 loss 优化 Query 分类；
 - `test.py`：在测试 episode 上预测 Query 类别并报告 Accuracy；
-- `semantic_evolution.py`：生成语义描述 JSON，可替换为 WordNet + 大模型生成的类别视觉描述。
+- `semantic_evolution.py`：生成语义描述 JSON，可替换为 WordNet + 大模型生成的类别视觉描述。默认配置使用 CLIP 文本编码器把描述编码为语义向量。
 
 ## 环境配置
 
@@ -14,7 +14,7 @@ cd prj_5
 pip install -r requirements.txt
 ```
 
-建议使用 Python 3.10+、PyTorch 2.x 和 NVIDIA GPU。首次使用 `pretrained: true` 会下载 ResNet-18 预训练权重；如果服务器不能联网，可以在配置中改为 `pretrained: false`。
+建议使用 Python 3.10+、PyTorch 2.x 和 NVIDIA GPU。首次使用 `pretrained: true` 会下载 ResNet-18 预训练权重；首次使用 `semantic_encoder: clip` 会下载 CLIP 文本编码器权重。如果服务器不能联网，可以把 `pretrained` 改为 `false`，把 `semantic_encoder` 改为 `hash` 使用本项目内置的轻量文本哈希编码，或把下载好的 CLIP checkpoint 路径填到 `semantic_checkpoint`。
 
 ## 数据准备
 
@@ -41,7 +41,7 @@ data/miniImageNet/
 python semantic_evolution.py --data-root data/miniImageNet --split train --output outputs/semantic_descriptions.json
 ```
 
-实验报告中可以自行选取大模型，把 `outputs/semantic_descriptions.json` 中每个类别的描述替换为更细的视觉描述。脚本只要求 JSON 键为类别目录名，值为描述文本。
+实验报告中可以自行选取大模型，把 `outputs/semantic_descriptions.json` 中每个类别的描述替换为更细的视觉描述。脚本只要求 JSON 键为类别目录名，值为描述文本。训练时 CLIP 会把这些文本描述编码为 512 维语义向量，再与视觉原型融合。
 
 ## 计算 Center
 
